@@ -30,16 +30,7 @@ UE.plugin.register('anchor', function (){
        },
        inputRule:function(root){
            utils.each(root.getNodesByTagName('a'),function(a){
-               var val;
-               if((val = a.getAttr('name')) && !a.getAttr('href')){
-                   a.tagName = 'img';
-                   a.setAttr({
-                       anchorname :a.getAttr('name'),
-                       'class' : 'anchorclass'
-                   });
-                   a.setAttr('name')
-
-               }
+              a.tagName = 'span';
            })
 
        },

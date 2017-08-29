@@ -33,18 +33,10 @@ UE.plugin.register('wordimage',function(){
         },
         inputRule : function (root) {
             utils.each(root.getNodesByTagName('img'), function (img) {
-                var attrs = img.attrs,
-                    flag = parseInt(attrs.width) < 128 || parseInt(attrs.height) < 43,
-                    opt = me.options,
-                    src = opt.UEDITOR_HOME_URL + 'themes/default/images/spacer.gif';
+                var attrs = img.attrs;
                 if (attrs['src'] && /^(?:(file:\/+))/.test(attrs['src'])) {
                     img.setAttr({
-                        width:attrs.width,
-                        height:attrs.height,
-                        alt:attrs.alt,
-                        word_img: attrs.src,
-                        src:src,
-                        'style':'background:url(' + ( flag ? opt.themePath + opt.theme + '/images/word.gif' : opt.langPath + opt.lang + '/images/localimage.png') + ') no-repeat center center;border:1px solid #ddd'
+                        word_img: attrs.src
                     })
                 }
             })
