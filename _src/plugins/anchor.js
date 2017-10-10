@@ -32,7 +32,6 @@ UE.plugin.register('anchor', function (){
            utils.each(root.getNodesByTagName('a'),function(a){
               a.tagName = 'span';
            })
-
        },
        commands:{
            /**

@@ -820,17 +820,19 @@
          * @warning 该方法会触发selectionchange事件
          * @param { String } html 要插入的html内容
          * @param { Boolean } isAppendTo 若传入true，不清空原来的内容，在最后插入内容，否则，清空内容再插入
+         * @param { Boolean } notFireSelectionchange 若传入true，不触发selectionchange事件，否则触发selectionchange事件
+         * @param { Boolean } ignoreBlank 若传入true，解析html时不过滤空白字符，否则过滤空白字符
          * @example
          * ```javascript
          * //假设设置前的编辑器内容是 <p>old text</p>
          * editor.setContent('<p>new text</p>', true); //插入的结果是<p>old text</p><p>new text</p>
          * ```
          */
-        setContent: function (html, isAppendTo, notFireSelectionchange) {
+        setContent: function (html, isAppendTo, notFireSelectionchange, ignoreBlank) {
             var me = this;
 
             me.fireEvent('beforesetcontent', html);
-            var root = UE.htmlparser(html);
+            var root = UE.htmlparser(html, ignoreBlank);
             me.filterInputRule(root);
             html = root.toHtml();
 
