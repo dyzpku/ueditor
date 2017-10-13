@@ -775,7 +775,9 @@
                     if (opt.initialFrameWidth) {
                         opt.minFrameWidth = opt.initialFrameWidth;
                     } else {
-                        opt.minFrameWidth = opt.initialFrameWidth = holder.offsetWidth;
+                        //when opt.initialFrameWidth is not defined, it should keep 100% width with its container
+                        //unless its container specify width property in style attribute
+                        // opt.minFrameWidth = opt.initialFrameWidth = holder.offsetWidth;
                         var styleWidth = holder.style.width;
                         if(/%$/.test(styleWidth)) {
                             opt.initialFrameWidth = styleWidth;
